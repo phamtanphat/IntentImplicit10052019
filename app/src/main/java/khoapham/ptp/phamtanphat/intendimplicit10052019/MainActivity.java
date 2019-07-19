@@ -26,9 +26,15 @@ public class MainActivity extends AppCompatActivity {
         btnWifi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
+                startActivity(intent);
             }
         });
+        if (isConnectingToInternet()){
+            Log.d("BBB","Có internet");
+        }else if (isConnectingToWifi()){
+            Log.d("BBB","Có wifi");
+        }
     }
     private boolean isConnectingToInternet() {
         ConnectivityManager connectivity = (ConnectivityManager) MainActivity.this
@@ -55,5 +61,5 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return false;
-    } }
+    }
 }
